@@ -19,8 +19,10 @@ export function StatusBoard({ status }: { status: Status }) {
         <p class="mute">nothing in runs/</p>
       ) : (
         <ul>
-          {status.nights.map((n) => (
-            <li>{n}</li>
+          {status.nights.map(({ night, ok, retry, fail }) => (
+            <li>
+              <a href={`/digest/${night}`}>{night}</a> · {ok} ok · {retry} retry · {fail} fail
+            </li>
           ))}
         </ul>
       )}
